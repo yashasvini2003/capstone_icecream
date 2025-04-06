@@ -20,7 +20,7 @@ This repository contains the frontend code for our web application, deployed on 
 
 ## 🌐 Live Application
 
-🔗 [https://capstone-icecream-m2y9-ftuk0qmi1-yashasvinis-projects.vercel.app](https://capstone-icecream-m2y9-ftuk0qmi1-yashasvinis-projects.vercel.app)
+🔗 [https://capstone-icecream.vercel.app](https://capstone-icecream.vercel.app)
 
 
 ## 🛠️ Setup Instructions
