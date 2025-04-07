@@ -32,7 +32,7 @@ export default function Test () {
 
     return (
         <div>
-            <div className="flex justify-center mt-2">
+            <div className="flex justify-center mt-24">
                 <SampleButton click={getData} btnName={"Get Icecreams"} />
             </div>
 
