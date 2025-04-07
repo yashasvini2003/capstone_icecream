@@ -40,7 +40,7 @@ npm install
 ### 3. Configure Environment Variables
 Create a .env file in the root directory with the following:
 ```bash
-NEXT_PUBLIC_BACKEND_API=[http://209.38.150.78](https://icapi.yashasvini.dev/)
+NEXT_PUBLIC_BACKEND_API=https://icapi.yashasvini.dev
 ```
 
 ## 🔌 Backend API Integration
