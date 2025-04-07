@@ -1,9 +1,19 @@
-import { FaFacebook, FaInstagram } from "react-icons/fa";
+'use client'
+
+import { FaFacebook, FaInstagram, FaArrowUp } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import Link from "next/link";
 import '../app/styles.css'
 
 const Footer = () => {
+
+  const toTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="bg-gradient-to-r from-red-300 to-red-600 text-white py-7 px-6 md:px-12 relative">
       {/* Circles */}
@@ -22,7 +32,7 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center gap-6 mb-6 font-medium">
             <Link href="/" className="underline-link">ABOUT US</Link>
             <Link href="/" className="underline-link">OUR SPECIALS</Link>
-            <Link href="/" className="underline-link">FULL MENU</Link>
+            <Link href="/test" className="underline-link">FULL MENU</Link>
             <Link href="/" className="underline-link">PROMOTIONS</Link>
             <Link href="/" className="underline-link">CONTACT US</Link>
           </div>
@@ -36,6 +46,15 @@ const Footer = () => {
             <Link href="/" className="hover:text-black transition duration-300 hover:scale-110">
               <BsTwitterX size={40} />
             </Link>
+          </div>
+          <div className="flex gap-6 mt-6">
+            <button
+              onClick={toTop}
+              className="flex items-center bg-white text-black font-medium py-3 px-6 rounded-full shadow-lg transform hover:scale-105 transition-transform duration border-4 border-transparent hover:border-red-800"
+            >
+              <span className="mr-2">GO UP</span>
+              <FaArrowUp />
+            </button>
           </div>
         </div>
 
