@@ -24,7 +24,8 @@ export default function Register() {
                 throw new Error('Passwords do not match, try again.')
             }
 
-            const response = await fetch('process.env.NEXT_PUBLIC_BACKEND_API/api/users/register', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/register`, { // env varaible for deployment
+            // const response = await fetch('http://localhost:8080/api/users/register', { // Hardcoded for testing
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -47,7 +48,7 @@ export default function Register() {
     };
 
     return (
-        <div className="bg-gray-100 p-24">
+        <div className="min-h-screen bg-gray-100 p-24">
             <div className="max-w-sm mx-auto bg-white shadow-lg rounded-lg p-6">
                 <h1 className="text-3xl font-bold text-center text-gray-800 mb-6">
                     Register

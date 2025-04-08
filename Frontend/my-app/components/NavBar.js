@@ -72,7 +72,7 @@ const NavBar = () => {
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-6">
           <Link href="/" className="underline-link">HOME</Link>
-          <Link href="/" className="underline-link">FLAVORS</Link>
+          <Link href="/test" className="underline-link">FLAVORS</Link>
           <Link href="/" className="underline-link">CONTACT</Link>
           <Link href="/" className="underline-link">EXPLORE</Link>
 
