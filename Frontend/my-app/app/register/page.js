@@ -24,7 +24,7 @@ export default function Register() {
                 throw new Error('Passwords do not match, try again.')
             }
 
-            const response = await fetch('http://localhost:8080/api/users/register', {
+            const response = await fetch('process.env.NEXT_PUBLIC_BACKEND_API/api/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
