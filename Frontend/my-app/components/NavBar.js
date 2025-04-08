@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   MdMenu,
   MdClose,
@@ -16,18 +16,45 @@ import {
 import { FaShoppingCart } from "react-icons/fa";
 import '../app/styles.css'
 import { useRouter } from 'next/navigation';
+import { jwtDecode } from 'jwt-decode';
 
 const NavBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false); 
+  const [username, setUsername] = useState('');
   const router = useRouter();
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+      try {
+        const decoded = jwtDecode(token);
+        console.log('Decoded token:', decoded);
+        setUsername(decoded.username || 'User');
+      } catch (err) {
+        console.error('Invalid token', err);
+        localStorage.removeItem('token');
+        setIsLoggedIn(false);
+      }
+    }
+  }, []);
+
   const handleLogout = () => {
+    localStorage.removeItem('token');
     setIsLoggedIn(false);
     setIsMenuOpen(false);
     setIsProfileDropdownOpen(false);
     router.push('/');
+  };
+
+  const handleLoginClick = () => {
+    router.push('/login');
+  };
+
+  const handleRegisterClick = () => {
+    router.push('/register');
   };
 
   return (
@@ -45,7 +72,7 @@ const NavBar = () => {
         {/* Navigation Links */}
         <div className="hidden md:flex items-center space-x-6">
           <Link href="/" className="underline-link">HOME</Link>
-          <Link href="/test" className="underline-link">FLAVORS</Link>
+          <Link href="/" className="underline-link">FLAVORS</Link>
           <Link href="/" className="underline-link">CONTACT</Link>
           <Link href="/" className="underline-link">EXPLORE</Link>
 
@@ -56,7 +83,7 @@ const NavBar = () => {
                 onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
               >
                 <span className="text-pink-600 font-semibold bg-white p-2 rounded-lg flex items-center">
-                    TestUser
+                    {username}
                     {isProfileDropdownOpen ? <MdArrowDropUp className="ml-2" /> : <MdArrowDropDown className="ml-2" />}
                 </span>
               </div>
@@ -88,12 +115,12 @@ const NavBar = () => {
             </div>
           ) : (
             <>
-              <button onClick={() => setIsLoggedIn(true)} className="bg-pink-500 text-white px-5 py-2 rounded-md hover:bg-pink-600 transition">
+              <button onClick={handleLoginClick} className="bg-pink-500 text-white px-5 py-2 rounded-md hover:bg-pink-600 transition">
                 Login
               </button>
-              <Link href="/" className="bg-pink-300 text-white px-5 py-2 rounded-md hover:bg-pink-400 transition">
+              <button onClick={handleRegisterClick} className="bg-pink-300 text-white px-5 py-2 rounded-md hover:bg-pink-400 transition">
                 Register
-              </Link>
+              </button>
             </>
           )}
         </div>
@@ -125,7 +152,7 @@ const NavBar = () => {
             {isLoggedIn ? (
               <>
                 <Link href="/" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 py-2 hover:text-pink-600">
-                  <MdPerson /> <span className>Profile</span>
+                  <MdPerson /> <span>Profile</span>
                 </Link>
                 <Link href="/" onClick={() => setIsMenuOpen(false)} className="flex items-center space-x-2 py-2 hover:text-pink-600">
                   <FaShoppingCart /> <span>Shopping Carts</span>
@@ -145,10 +172,10 @@ const NavBar = () => {
               </>
             ) : (
               <>
-                <button onClick={() => setIsLoggedIn(true)} className="bg-pink-500 text-white py-3 text-center rounded-full hover:bg-pink-600">
+                <button onClick={handleLoginClick} className="bg-pink-500 text-white py-3 text-center rounded-full hover:bg-pink-600">
                   Login
                 </button>
-                <button className="bg-pink-300 text-white py-3 text-center rounded-full hover:bg-pink-400">
+                <button onClick={handleRegisterClick} className="bg-pink-300 text-white py-3 text-center rounded-full hover:bg-pink-400">
                   Register
                 </button>
               </>
