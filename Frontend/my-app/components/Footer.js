@@ -32,7 +32,7 @@ const Footer = () => {
           <div className="flex flex-wrap justify-center gap-6 mb-6 font-medium">
             <Link href="/" className="underline-link">ABOUT US</Link>
             <Link href="/" className="underline-link">OUR SPECIALS</Link>
-            <Link href="/test" className="underline-link">FULL MENU</Link>
+            <Link href="/" className="underline-link">FULL MENU</Link>
             <Link href="/" className="underline-link">PROMOTIONS</Link>
             <Link href="/" className="underline-link">CONTACT US</Link>
           </div>

@@ -12,11 +12,14 @@
     bottom: 0;
     width: 0;
     height: 2px;
-    background-color: red; 
+    background-color: darkred; 
     transition: width 0.3s ease;
   }
   
   .underline-link:hover::after {
     width: 100%;
   }
-  
+
+  .underline-link:hover {
+    color: #db2777
+  }
