@@ -12,7 +12,7 @@ export default function Login() {
         e.preventDefault();
     
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/api/icecreams`, { // env varaible for deployment
+            const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API}/api/users/login`, { // env varaible for deployment
             // const response = await fetch('http://localhost:8080/api/users/login', { // Hardcode for testing
                 method: 'POST',
                 headers: {
